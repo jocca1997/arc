@@ -5,13 +5,9 @@
 CORE_COUNT=$(( $(grep "^processor" /proc/cpuinfo | tail -1 | awk '{print $3}') + 1 ))
 
 if [[ ${CORE_COUNT} != 4 ]]; then
-
     echo "Your device is not compatible"
-
     exit 1
-
-fi
-
+if
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 
 if [[ -z $(which irqbalance) ]]; then
